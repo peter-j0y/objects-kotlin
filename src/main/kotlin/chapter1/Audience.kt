@@ -1,5 +1,7 @@
 package chapter1
 
-class Audience(val bag: Bag) {
-
+class Audience(private val bag: Bag) {
+    fun buy(ticket: Ticket): Long {
+        return bag.hold(ticket)
+    }
 }

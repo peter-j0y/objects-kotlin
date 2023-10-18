@@ -7,7 +7,7 @@ class TicketOffice(private var amount:Long, vararg tickets: Ticket) {
         this.tickets.addAll(tickets)
     }
 
-    fun getTicket(): Ticket {
+    private fun getTicket(): Ticket {
         return tickets.removeFirst()
     }
 
@@ -15,7 +15,11 @@ class TicketOffice(private var amount:Long, vararg tickets: Ticket) {
         this.amount -= amount
     }
 
-    fun plusAmount(amount: Long) {
+    private fun plusAmount(amount: Long) {
         this.amount += amount
+    }
+
+    fun sellTicketTo(audience: Audience) {
+        plusAmount(audience.buy(getTicket()))
     }
 }
